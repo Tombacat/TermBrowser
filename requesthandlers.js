@@ -15,9 +15,8 @@ function list(response, postData) {
 
 function term(response, postData) {
   console.log("Request handler term was called");
-  var title = 'Received selection';
-  var body = 'RID: ' + postData;
-  htmlprocessor.createBody(title, body, response);
+  console.log(postData);
+  termList.getTerm(response, postData);
 }
 
 exports.list = list;
