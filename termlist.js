@@ -206,6 +206,52 @@ function getTerm(response, postData) {
                 data_found = data_found + 1;
               }
             }
+            if(typeof parsed_d["synonyms"] !== 'undefined') {
+              body = body + '<tr><td><h4>Synonyms</h4></td></tr>';
+              for (var i=0; i<parsed_d["synonyms"]["items"].length; i++) {
+                body = body + '<tr><td><input type="radio" name="all" value="' + parsed_d["synonyms"]["items"][i]["_id"] + '"></td><td>' + parsed_d["synonyms"]["items"][i]["_name"] + '</td></tr>';
+                data_found = data_found + 1;
+              }
+            }
+            if(typeof parsed_d["preferred_synonym"] !== 'undefined') {
+              body = body + '<tr><td><h4>Preferred synonym</h4></td></tr>';
+              body = body + '<tr><td><input type="radio" name="all" value="' + parsed_d["preferred_synonym"]["_id"] + '"></td><td>' + parsed_d["preferred_synonym"]["_name"] + '</td></tr>';
+              data_found = data_found + 1;
+            }
+            if(typeof parsed_d["related_terms"] !== 'undefined') {
+              body = body + '<tr><td><h4>Related terms</h4></td></tr>';
+              for (var i=0; i<parsed_d["related_terms"]["items"].length; i++) {
+                body = body + '<tr><td><input type="radio" name="all" value="' + parsed_d["related_terms"]["items"][i]["_id"] + '"></td><td>' + parsed_d["related_terms"]["items"][i]["_name"] + '</td></tr>';
+                data_found = data_found + 1;
+              }
+            }
+            if(typeof parsed_d["replaces"] !== 'undefined') {
+              body = body + '<tr><td><h4>Replaces</h4></td></tr>';
+              for (var i=0; i<parsed_d["replaces"]["items"].length; i++) {
+                body = body + '<tr><td><input type="radio" name="all" value="' + parsed_d["replaces"]["items"][i]["_id"] + '"></td><td>' + parsed_d["replaces"]["items"][i]["_name"] + '</td></tr>';
+                data_found = data_found + 1;
+              }
+            }
+            if(typeof parsed_d["replaced_by"] !== 'undefined') {
+              body = body + '<tr><td><h4>Replaced by</h4></td></tr>';
+              body = body + '<tr><td><input type="radio" name="all" value="' + parsed_d["replaced_by"]["_id"] + '"></td><td>' + parsed_d["replaced_by"]["_name"] + '</td></tr>';
+              data_found = data_found + 1;
+            }
+            if(typeof parsed_d["assigned_terms"] !== 'undefined') {
+              body = body + '<tr><td><h4>Assigned terms</h4></td></tr>';
+              for (var i=0; i<parsed_d["assigned_terms"]["items"].length; i++) {
+                body = body + '<tr><td><input type="radio" name="all" value="' + parsed_d["assigned_terms"]["items"][i]["_id"] + '"></td><td>' + parsed_d["assigned_terms"]["items"][i]["_name"] + '</td></tr>';
+                data_found = data_found + 1;
+              }
+            }
+            if(typeof parsed_d["assigned_to_terms"] !== 'undefined') {
+              body = body + '<tr><td><h4>Assigned to terms</h4></td></tr>';
+              for (var i=0; i<parsed_d["assigned_to_terms"]["items"].length; i++) {
+                body = body + '<tr><td><input type="radio" name="all" value="' + parsed_d["assigned_to_terms"]["items"][i]["_id"] + '"></td><td>' + parsed_d["assigned_to_terms"]["items"][i]["_name"] + '</td></tr>';
+                data_found = data_found + 1;
+              }
+            }
+
             if(data_found > 0) {
               body = body + '</table><br><input type="submit" value="Select term" /></div></form>';
               body = body.replace('formaction','term');
